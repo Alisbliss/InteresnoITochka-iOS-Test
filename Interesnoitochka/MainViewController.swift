@@ -30,4 +30,11 @@ class MainViewController: UIViewController {
             make.center.equalToSuperview()
         }
     }
+    
+    private func setupLayout() {
+        view.addSubview(welcomeLabel)
+        welcomeLabel.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
+    }
 }
