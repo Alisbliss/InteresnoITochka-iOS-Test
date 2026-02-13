@@ -7,25 +7,24 @@
 
 import UIKit
 import SwiftUI
-import SnapKit // Не забудьте импортировать
+import SnapKit
 
 class OnboardingViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(hex: "#25282D")
-       setupSwiftUI()
+        setupSwiftUI()
     }
-
+    
     private func setupSwiftUI() {
         let swiftUIView = OnBoardingSwiftUI { [weak self] in
-            print("кнопка нажата")
             self?.goToRegistrationScreen()
         }
-
+        
         let hostingController = UIHostingController(rootView: swiftUIView)
         hostingController.view.backgroundColor = .clear
-
+        
         addChild(hostingController)
         view.addSubview(hostingController.view)
         hostingController.didMove(toParent: self)
@@ -35,6 +34,7 @@ class OnboardingViewController: UIViewController {
     }
     
     func goToRegistrationScreen() {
-        
+        let registrationVC = RegistrationViewController()
+        self.navigationController?.pushViewController(registrationVC, animated: true)
     }
 }
